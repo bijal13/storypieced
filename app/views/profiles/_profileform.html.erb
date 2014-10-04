@@ -1,0 +1,15 @@
+%= form_for @profile do |p| %>
+
+   <%= f.label :name %><br>
+   <%= f.text_field :name %>
+ </p>
+
+ <p>
+   <%= f.label :text %><br>
+   <%= f.text_area :write %>
+ </p>
+
+ <p>
+   <%= f.submit 'Save', class: 'btn btn-default' %>
+ </p>
+<% end %>
