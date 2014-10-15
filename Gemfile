@@ -46,3 +46,5 @@ gem 'twitter-bootstrap-rails', '~> 3.2'
 
 gem 'authority', '~> 3.0.0'
 
+gem "cancan", '~> 1.6'
+

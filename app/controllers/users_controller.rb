@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   def show
   end
 
-  def eidt
+  def edit
   end
 
   def update

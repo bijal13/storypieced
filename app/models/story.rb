@@ -1,5 +1,5 @@
 class Story < ActiveRecord::Base
-  belongs_to :user
+  has_many :story_updates
   validates :title, presence: true,
                     length: { minimum: 5, maximum: 140 }
   validates :write, presence: true,

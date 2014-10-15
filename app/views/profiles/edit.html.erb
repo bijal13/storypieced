@@ -1,5 +1,5 @@
-<h1>Update Your Profile</h1>
+<h1>Edit Your Profile</h1>
 
-<%= render 'profileform' %>
+<%= link_to "Profile", edit_profile_path(user.profile) %>
 
 <%= link_to 'Back', stories_path %>

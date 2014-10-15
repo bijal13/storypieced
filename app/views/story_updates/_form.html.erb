@@ -1,16 +1,15 @@
-<%= form_for @story do |f| %>
-<% if @story.errors.any? %>
+<%= form_for @story_update do |f| %>
+<% if @story_update.errors.any? %>
  <div id="error_explanation">
-   <h2><%= pluralize(@story.errors.count, "error") %> prohibited
+   <h2><%= pluralize(@story_update.errors.count, "error") %> prohibited
      this story from being saved:</h2>
    <ul>
-   <% @story.errors.full_messages.each do |msg| %>
+   <% @story_update.errors.full_messages.each do |msg| %>
      <li><%= msg %></li>
    <% end %>
    </ul>
  </div>
  <% end %>
-
 
  <p>
    <%= f.label :text %><br>

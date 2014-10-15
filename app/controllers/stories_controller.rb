@@ -1,6 +1,7 @@
 class StoriesController < ApplicationController
 
   before_action :get_story, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
 
   def index
     @stories = Story.all
@@ -28,23 +29,16 @@ class StoriesController < ApplicationController
   end
 
   def update
-    respond_to do |format|
       if @story.update(story_params)
-        format.html { redirect_to @story, notice: 'The story was successfully updated.' }
-        format.json { render :show, status: :ok, location: @story}
+        redirect_to @story, notice: 'The story was successfully updated.'
       else
-        format.html { render :edit }
-        format.json { render json: @story.errors, status: :unprocessable_entity }
+        render :edit
       end
-    end
   end
 
   def destroy
     @story.destroy
-    respond_to do |format|
-      format.html { redirect_to stories_url, notice: 'The story was successfully deleted.' }
-      format.json { head :no_content }
-    end
+    redirect_to stories_url, notice: 'The story was successfully deleted.'
   end
 
   private
