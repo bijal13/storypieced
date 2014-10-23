@@ -1,23 +1,27 @@
+<%= content_for :breadcrumbs do %>
+  <ol class="breadcrumb">
+    <li><%= link_to 'Home', root_path %></li>
+    <li><%= link_to 'Stories', stories_path %></li>
+    <li class="active">New Story</li>
+  </ol>
+<% end %>
+
 <h1>New Story</h1>
 <p>Start your newsworthy story today! And see how it grows as others contribute!</p>
 
-<%= form_for :story, url: stories_path do |f| %>
-  <p>
-    <%= f.label :Title %><br>
-    <%= f.text_field :title %>
-  <p>
-
-  <p>
-    <%= f.label :Text %><br>
-    <%= f.text_area :write %>
-  <p>
-
-  <p>
-    <%= f.submit %>
-  <p>
-  <br><br><br>
-
-  <% end %>
+<%= form_for :story, url: stories_path, html: { class: 'well form', role: 'form' } do |f| %>
+  <div class="form-group">
+    <%= f.label :Title %>
+    <%= f.text_field :title, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :Text %>
+    <%= f.text_area :write, class: 'form-control' %>
+  </div>
+  <div class='actions'>
+    <%= f.submit 'Publish', class: 'btn btn-default' %>
+  </div>
+<% end %>
 
 
 

@@ -1,35 +1,34 @@
-<h1><strong>Stories</strong></h1>
+<%= content_for :breadcrumbs do %>
+  <ol class="breadcrumb">
+    <li><%= link_to 'Home', root_path %></li>
+    <li class="active">Stories</li>
+  </ol>
+<% end %>
 
+<h1>Stories</h1>
 <table>
   <thead>
     <tr>
       <th colspan="3"></th>
     </tr>
   </thead>
-
   <tbody>
     <% @stories.each do |story| %>
       <tr>
         <td><%= link_to story.title, story_path(story) %></td><br>
-
-
         <td><% if cannot? :edit, @story %>
         <%= link_to "Edit   ", edit_story_path(story) %>
         <% end %></td>
-
-
         <td><% if cannot? :delete, @story %>
         <%= link_to 'Delete   ', story, method: :delete, data: { confirm: 'Are you sure?' } %>
        <% end %></td>
-
-
-
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Story', new_story_path %> <br>
-
+<div class="row">
+  <div class="col-sm-12">
+    <%= link_to 'Publish A New Story', new_story_path, class: 'btn btn-primary' %>
+  </div>
+</div>
