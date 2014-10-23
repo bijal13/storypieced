@@ -16,26 +16,10 @@ ActiveRecord::Schema.define(version: 20141022105942) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "comments", force: true do |t|
-    t.string   "commenter"
-    t.text     "body"
-    t.integer  "question_id"
-    t.integer  "answer_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "profiles", force: true do |t|
     t.string   "name"
     t.string   "country"
     t.string   "bio"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "questions", force: true do |t|
-    t.string   "title"
-    t.text     "text"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -49,6 +33,7 @@ ActiveRecord::Schema.define(version: 20141022105942) do
 
   create_table "storyupdates", force: true do |t|
     t.string   "text"
+    t.string   "write"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
