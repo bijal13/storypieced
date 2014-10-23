@@ -1,7 +1,7 @@
 class StoryupdatesController < ApplicationController
 
   before_action :get_story, only: [:new, :show, :edit, :create, :update, :destroy]
-  load_and_authorize_resource
+  # load_and_authorize_resource
 
   def index
     @storyupdates = Storyupdate.all
@@ -12,9 +12,7 @@ class StoryupdatesController < ApplicationController
   end
 
   def create
-    byebug
     @storyupdate = @story.storyupdates.build(storyupdates_params)
-
     if @storyupdate.save
       redirect_to story_path(@story)
     else
@@ -29,11 +27,11 @@ class StoryupdatesController < ApplicationController
   end
 
   def update
-      if @storyupdate.update(storyupdates_params)
-        redirect_to story_path(@storyupdate), notice: 'The story was successfully updated.'
-      else
-        render :edit
-      end
+    if @storyupdate.update(storyupdates_params)
+      redirect_to story_path(@storyupdate), notice: 'The story was successfully updated.'
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -50,5 +48,4 @@ class StoryupdatesController < ApplicationController
   def storyupdates_params
     params.require(:storyupdate).permit(:title, :text)
   end
-
 end

@@ -1,26 +1,30 @@
-
-
-
-
-<p>
-  <strong>Title:</strong>
-  <%= @story.title %>
-</p>
-
-<p>
-  <strong>Snippet:</strong>
-  <%= @story.write %>
-
-</p>
-
-<% @story.storyupdates.each do |update| %>
-  <p>
-    <strong>Update</strong>
-    <%= update.title %>
-  </p>
-  <p>
-    <%= update.text %>
-  </p>
+<%= content_for :breadcrumbs do %>
+  <ol class="breadcrumb">
+    <li><%= link_to 'Home', root_path %></li>
+    <li><%= link_to 'Stories', stories_path %></li>
+    <li class="active"><%= @story.title %></li>
+  </ol>
 <% end %>
 
- <p><%= link_to "Add to this Story", new_story_storyupdate_path(@story)%><p>
+<div class="panel panel-default">
+  <div class="panel-heading"><%= @story.title %></div>
+  <div class="panel-body">
+    <%= @story.write %>
+  </div>
+</div>
+
+<div class="list-group">
+  <a href="#" class="list-group-item active">
+    <h4 class="list-group-item-heading">Updates</h4>
+  </a>
+<% @story.storyupdates.each do |update| %>
+  <a href="#" class="list-group-item">
+    <h4 class="list-group-item-heading"><%= update.title %></h4>
+    <p class="list-group-item-text"><%= update.text %></p>
+  </a>
+<% end %>
+</div>
+
+<div>
+  <%= link_to "Add to this Story", new_story_storyupdate_path(@story), class: 'btn btn-primary' %>
+</div>

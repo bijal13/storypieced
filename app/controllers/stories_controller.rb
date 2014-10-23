@@ -1,7 +1,7 @@
 class StoriesController < ApplicationController
 
   before_action :get_story, only: [:show, :edit, :update, :destroy]
-  load_and_authorize_resource except: [:create]
+  # load_and_authorize_resource except: [:create]
 
   def index
     @stories = Story.all
@@ -15,7 +15,7 @@ class StoriesController < ApplicationController
     @story = Story.new(story_params)
 
     if @story.save
-    redirect_to story_path(@story), notice: 'The story was successfully created.'
+      redirect_to story_path(@story), notice: 'The story was successfully created.'
     else
       render :new
     end
@@ -54,5 +54,4 @@ class StoriesController < ApplicationController
   def do_not_check_authorization?
    respond_to?(:devise_controller?)
   end
-
 end

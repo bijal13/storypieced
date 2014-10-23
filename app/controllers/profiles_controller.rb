@@ -8,21 +8,22 @@ class ProfilesController < ApplicationController
   end
 
   def show
+    @user.build_profile if @user.profile.nil?
   end
 
   def new
     @user.profile = Profile.new(:id => @user.id)
   end
 
- def create
+  def create
     @profile = @user.profile.create(params[:profile])
-      if @profile.save
-        flash[:notice] = 'Your profile was successfully created.'
-        redirect_to(@profile)
-      else
-        flash[:notice] = 'Error.  Something went wrong.'
-        render :new
-      end
+    if @profile.save
+      flash[:notice] = 'Your profile was successfully created.'
+      redirect_to(@profile)
+    else
+      flash[:notice] = 'Error. Something went wrong.'
+      render :new
+    end
   end
 
   def edit
@@ -30,21 +31,18 @@ class ProfilesController < ApplicationController
   end
 
   def update
-      if @profile.update_attributes(params[:profile])
-        flash[:notice] = 'Your profile was successfully updated.'
-        redirect_to(@profile)
-      else
-        render :edit
-      end
+    if @profile.update_attributes(params[:profile])
+      flash[:notice] = 'Your profile was successfully updated.'
+      redirect_to(@profile)
+    else
+      render :edit
+    end
   end
 
   def destroy
     @profile.destroy
-      redirect_to profile_url, notice: 'The profile was successfully deleted.'
-    end
+    redirect_to profile_url, notice: 'The profile was successfully deleted.'
   end
-
-
 
   def get_profile
     @profile = Profile.find(params[:profile_id])
@@ -56,9 +54,7 @@ class ProfilesController < ApplicationController
 
   private
 
-
-
   def profile_params
     params.require(:profile).permit([:name, :country, :bio])
   end
-
+end
