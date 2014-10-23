@@ -1,0 +1,22 @@
+<div class="navbar navbar-default navbar-static-top">
+  <div class="container">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="#">Storypieced</a>
+    <div class="navbar-collapse collapse navbar-responsive-collapse">
+      <ul class="nav navbar-nav">
+        <li><%= link_to "My Profile", user_profile_path(current_user) %></li>
+        <li><%= link_to "Stories", stories_path %></li>
+        <li><%= link_to "Storypiecers", users_path %></li>
+        <% if user_signed_in? %>
+          <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
+        <% else %>
+          <li><%= link_to('Login', new_user_session_path)  %></li>
+        <% end  %>
+      </ul>
+    </div>
+  </div>
+</div>
