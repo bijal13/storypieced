@@ -11,21 +11,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141015075942) do
+ActiveRecord::Schema.define(version: 20141022105942) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "countries", force: true do |t|
-    t.string   "name"
+  create_table "comments", force: true do |t|
+    t.string   "commenter"
+    t.text     "body"
+    t.integer  "question_id"
+    t.integer  "answer_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "profiles", force: true do |t|
     t.string   "name"
-    t.string   "photo"
+    t.string   "country"
     t.string   "bio"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "questions", force: true do |t|
+    t.string   "title"
+    t.text     "text"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -37,9 +47,13 @@ ActiveRecord::Schema.define(version: 20141015075942) do
     t.datetime "updated_at"
   end
 
-  create_table "story_updates", force: true do |t|
+  create_table "storyupdates", force: true do |t|
+    t.string   "text"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
+    t.integer  "story_id"
+    t.string   "title"
   end
 
   create_table "users", force: true do |t|
@@ -56,6 +70,7 @@ ActiveRecord::Schema.define(version: 20141015075942) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "admin",                  default: true
+    t.string   "role"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

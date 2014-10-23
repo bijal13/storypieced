@@ -10,9 +10,9 @@
   <tbody>
     <% @stories.each do |story| %>
       <tr>
-        <td><%= link_to story.title, story_path(story) %></td><br>
+        <td><%= link_to story.title, stories_path(story) %></td><br>
 
-        <td><%= link_to 'Edit   ', edit_story_path(story) %></td>
+        <td><%= link_to 'Edit    ', edit_story_path(story) %></td>
 
         <td><%= link_to 'Delete', story, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
@@ -23,5 +23,5 @@
 <br>
 
 <%= link_to 'New Story', new_story_path %> <br>
-<%= link_to 'Update this Story', new_story_update_path %> <br>
+<%= link_to 'Update this Story', new_story_storyupdate_path %> <br>
 

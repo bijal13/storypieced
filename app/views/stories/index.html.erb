@@ -12,9 +12,18 @@
       <tr>
         <td><%= link_to story.title, story_path(story) %></td><br>
 
-        <td><%= link_to 'Edit   ', edit_story_path(story) %></td>
 
-        <td><%= link_to 'Delete', story, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><% if cannot? :edit, @story %>
+        <%= link_to "Edit   ", edit_story_path(story) %>
+        <% end %></td>
+
+
+        <td><% if cannot? :delete, @story %>
+        <%= link_to 'Delete   ', story, method: :delete, data: { confirm: 'Are you sure?' } %>
+       <% end %></td>
+
+
+
       </tr>
     <% end %>
   </tbody>

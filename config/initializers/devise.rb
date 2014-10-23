@@ -233,6 +233,7 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
+  config.omniauth :twitter, "A8cQ04YKN9oWObnlcSpvR1keN", "8BDUh5eHpDJNTCEODCkOzqJfaGYSgv8ETg70T0ATdDjOYyPIkB"
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
@@ -256,4 +257,14 @@ Devise.setup do |config|
   # When using omniauth, Devise cannot automatically set Omniauth path,
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = '/my_engine/users/auth'
+  require 'Twitter'
+
+  #twitter = Twitter::REST::Client.new do |config|
+  client = Twitter::REST::Client.new do |config|
+    config.consumer_key = ENV['A8cQ04YKN9oWObnlcSpvR1keN']
+    config.consumer_secret = ENV['8BDUh5eHpDJNTCEODCkOzqJfaGYSgv8ETg70T0ATdDjOYyPIkB']
+    config.access_token = ENV['Y456270634-EiV1Oc6A6mhPQtSQwGOWodHPdqBm4cwBRxeLs87j']
+    config.access_token_secret = ENV['ujaLYi2D6RdCEA5adi2DIdZXdOF1cdhDNMIKhY0Xxb5eR']
+  end
+
 end

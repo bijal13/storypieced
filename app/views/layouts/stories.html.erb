@@ -48,15 +48,15 @@
         <a class="navbar-brand" href="#">Storypieced</a>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav">
-            <li><%= link_to "My Profile", profile_path([:id]) %></li>
+           <li><%= link_to "My Profile", user_profile_path(current_user) %></li>
             <li><%= link_to "Stories", stories_path  %></li>
-            <li><%= link_to "Storypiecers", profiles_path  %></li>
+            <li><%= link_to "Storypiecers", users_path  %></li>
              <li><% if user_signed_in? %></li>
   <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
   </li>
 <% else %>
   <li>
-  <%= link_to('Login', new_user_session_path)  %>
+  <%= link_to('Home', new_user_session_path)  %>
   </li>
 <% end  %></li>
           </ul>
@@ -75,9 +75,9 @@
             <h3></h3>
             <ul class="nav nav-list">
               <li class="nav-header"></li>
-              <li><%= link_to "My Profile", profile_path([:id]) %></li>
-              <li><%= link_to "Stories", stories_path   %></li>
-              <li><%= link_to "Storypiecers", profiles_path  %></li>
+            <li><%= link_to "My Profile", user_profile_path(current_user) %></li>
+            <li><%= link_to "Stories", stories_path  %></li>
+            <li><%= link_to "Storypiecers", users_path  %></li>
             </ul>
           </div><!--/.well -->
         </div><!--/span-->

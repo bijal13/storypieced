@@ -1,0 +1,2 @@
+module StoryupdatesHelper
+end

@@ -10,21 +10,25 @@
 <%= 'Profiles' %>
 
   <tbody>
-    <% @profiles.each do |profile| %>
-     <td>
-            <%= profile.name %>
+  <% @users.each do |user| %>
+     <td><%= unless user.profile.blank?
+            %>
           </td>
           <td>
-            <%= profile.country %>
+            <%= user.profile.name%>
+          </td>
+          <td>
+            <%= user.profile.country %>
           </td>
           <td>
             <%= profile.bio %>
           </td>
       <tr>
         <td><%= link_to profile.name, profile_path(profile) %></td>
-        <td><%= link_to 'Edit', edit_profile_path(profile) %></td>
+        <td><%= link_to 'Edit', edit_user_profile_path(user, user.profile) %></td>
       </tr>
     <% end %>
+  <% end -%>
   </tbody>
 </table>
 
@@ -33,7 +37,13 @@
 <%= link_to 'Stories', stories_path %>
 
 
-
+<% @users.each do |user| -%>
+  <% unless user.profile.blank? -%>
+    <%= h user.profile.name %>
+    <%= h user.profile.category %>
+    <%= link_to 'Go to profile', user_profile_path(user, user.profile) %>
+  <% end -%>
+<% end -%>
 
 
 

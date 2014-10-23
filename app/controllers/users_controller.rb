@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+
+  @user.update_attributes(params[:user].permit(:role_ids))
+
   def index
   end
 

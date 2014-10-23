@@ -1,12 +1,26 @@
+
+
+
+
 <p>
   <strong>Title:</strong>
   <%= @story.title %>
-
 </p>
 
 <p>
   <strong>Snippet:</strong>
   <%= @story.write %>
+
 </p>
 
+<% @story.storyupdates.each do |update| %>
+  <p>
+    <strong>Update</strong>
+    <%= update.title %>
+  </p>
+  <p>
+    <%= update.text %>
+  </p>
+<% end %>
 
+ <p><%= link_to "Add to this Story", new_story_storyupdate_path(@story)%><p>
