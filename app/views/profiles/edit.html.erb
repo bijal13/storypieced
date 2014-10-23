@@ -1,5 +1,9 @@
+<%= content_for :breadcrumbs do %>
+  <ol class="breadcrumb">
+    <li><%= link_to 'Home', root_path %></li>
+    <li class="active">edit profile</li>
+  </ol>
+<% end %>
+
 <h1>Edit Your Profile</h1>
-
-<%= link_to "Profile", edit_profile_path(user.profile) %>
-
-<%= link_to 'Back', stories_path %>
+<%= render 'profileform' %>

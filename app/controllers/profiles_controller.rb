@@ -1,14 +1,10 @@
 class ProfilesController < ApplicationController
 
-  before_action :get_user, only: [:show, :create, :edit]
-  before_action :get_profile, only: [:update, :destroy]
+  before_action :get_user, only: [:show, :create, :edit, :update]
+  before_action :get_profile, only: [:destroy]
 
   def index
     @profiles = Profiles.all
-  end
-
-  def show
-    @user.build_profile if @user.profile.nil?
   end
 
   def new
@@ -27,13 +23,14 @@ class ProfilesController < ApplicationController
   end
 
   def edit
-    @profile = @user.profile.find(params[:user_id])
+    @user.build_profile if @user.profile.nil?
   end
 
   def update
-    if @profile.update_attributes(params[:profile])
+    @user.build_profile if @user.profile.nil?
+    if @user.profile.update_attributes(profile_params)
       flash[:notice] = 'Your profile was successfully updated.'
-      redirect_to(@profile)
+      redirect_to(edit_user_profile_path(@user))
     else
       render :edit
     end

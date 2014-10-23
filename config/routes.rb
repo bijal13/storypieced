@@ -1,23 +1,13 @@
 Rails.application.routes.draw do
 
   devise_for :users, :controllers => { omniauth_callbacks: 'omniauth_callbacks' }
-
   resources :users do
-    resource :profile, only: [:edit, :show]
+    resource :profile, only: [:edit, :update]
   end
-
 
   resources :stories, only: [:create, :new, :show, :index, :edit, :update, :destroy] do
     resources :storyupdates, only: [:new, :create, :show]
   end
-
-
-  # resources :profiles
-
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
-
-
 
   # You can have the root of your site routed with "root"
   root to: 'home#index'
