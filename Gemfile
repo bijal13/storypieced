@@ -49,3 +49,5 @@ gem "cancan", '~> 1.6'
 gem 'omniauth', '~> 1.2'
 gem 'omniauth-twitter', '~> 1.1'
 gem 'twitter', '~> 5.11.0'
+gem "therubyracer"
+gem "less-rails"
