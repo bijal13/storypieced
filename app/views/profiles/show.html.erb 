@@ -1,0 +1,29 @@
+<table>
+  <tbody>
+      <tr>
+          <td>
+            <%= user.profile.name%>
+          </td>
+          <td>
+            <%= user.profile.country %>
+          </td>
+          <td>
+            <%= profile.bio %>
+          </td>
+      <tr>
+    <% end %>
+  <% end -%>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Stories', stories_path %>
+
+
+
+
+
+
+
+

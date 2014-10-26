@@ -22,6 +22,10 @@ class ProfilesController < ApplicationController
     end
   end
 
+  def show
+    render user_profile_path(@user)
+  end
+
   def edit
     @user.build_profile if @user.profile.nil?
   end
